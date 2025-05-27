@@ -1,0 +1,14 @@
+---
+- name: Listen for events
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+   rules:
+     - name: Run "Demo Job Template"          # Название правила (для логов)
+       condition: event.payload.message == "Demo EDA Astra Automation"  # Условие
+       action:
+          run_job_template:                   # Действие запустить Шаблон задания (Job Template)
+            name: 'Demo Job Template'         # Запускаем шаблон задания 'Demo Job Template' в Automation Controller
+            organization: 'Default'           # В какой организации на Automation Controller искать шаблон
