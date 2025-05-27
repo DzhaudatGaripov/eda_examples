@@ -2,7 +2,7 @@
 - name: Hello World
   hosts: all
   sources:
-    - ansible.eda.range:
+    - ansible.eda.webhook:
         limit: 5
   rules:
     - name: Say Hello
